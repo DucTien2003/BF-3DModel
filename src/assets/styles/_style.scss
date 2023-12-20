@@ -1,0 +1,48 @@
+@import './variables';
+
+.primary-linear-text {
+  background: linear-gradient(to right, #00b3fc, #7f409f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.container-content {
+  padding: 0 20px;
+}
+
+.text-tiny {
+  font-size: 10px !important;
+}
+
+.primary-color-1 {
+  color: var(--primary-color-1) !important;
+}
+
+.primary-hover-1 {
+  &:hover {
+    color: var(--primary-color-1) !important;
+  }
+}
+
+.primary-color-2 {
+  color: var(--primary-color-2) !important;
+}
+
+.primary-hover-2 {
+  &:hover {
+    color: var(--primary-color-2) !important;
+  }
+}
+
+.gray-text {
+  color: #808080 !important;
+}
+
+.limited-line-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
