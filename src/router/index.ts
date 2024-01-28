@@ -9,6 +9,15 @@ const routes: Array<RouteRecordRaw> = [
       layout: 'default-layout',
     },
   },
+  {
+    path: '/news-feed',
+    name: 'news-feed',
+    component: () =>
+      import(/* webpackChunkName: "news-feed" */ '../views/NewsFeed.vue'),
+    meta: {
+      layout: 'default-layout',
+    },
+  },
   //   {
   //     path: '/reset-password',
   //     name: 'reset-password',

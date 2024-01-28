@@ -26,6 +26,17 @@
   }
 }
 
+.primary-bg-color-1 {
+  background-color: var(--primary-color-1) !important;
+}
+
+.primary-filter-1 {
+  &:hover {
+    filter: brightness(0) invert(14%) sepia(100%) saturate(7491%)
+      hue-rotate(193deg) brightness(115%) contrast(131%);
+  }
+}
+
 .primary-color-2 {
   color: var(--primary-color-2) !important;
 }
@@ -33,6 +44,21 @@
 .primary-hover-2 {
   &:hover {
     color: var(--primary-color-2) !important;
+  }
+}
+
+.primary-bg-color-2 {
+  background-color: var(--primary-color-2) !important;
+}
+
+.primary-border-2 {
+  border: 1px solid rgba($color: #7f409f, $alpha: 0.1);
+}
+
+.primary-filter-2 {
+  &:hover {
+    filter: brightness(100%) invert(45%) sepia(100%) saturate(7502%)
+      hue-rotate(288deg) brightness(100%) contrast(95%);
   }
 }
 

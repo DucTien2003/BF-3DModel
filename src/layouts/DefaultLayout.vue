@@ -16,8 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 // import { useRouter } from 'vue-router';
+import { listenerResize } from '@/utils';
 import Slider from '@/components/layoutComp/slider/Slider.vue';
 import Header from '@/components/layoutComp/header/Header.vue';
 import Filter from '@/components/layoutComp/filter/Filter.vue';
@@ -29,12 +30,7 @@ const handleResize = () => {
   const widthScreen = window.innerWidth || 0;
   isMobile.value = widthScreen <= 768;
 };
-onMounted(() => {
-  window.addEventListener('resize', handleResize);
-});
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize);
-});
+listenerResize(handleResize);
 </script>
 
 <style scoped lang="scss"></style>

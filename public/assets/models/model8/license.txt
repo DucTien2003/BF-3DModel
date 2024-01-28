@@ -1,0 +1,11 @@
+Model Information:
+* title:	T-90MS
+* source:	https://sketchfab.com/3d-models/t-90ms-de538d03a4af49b699438e8fc2fcf52c
+* author:	Cloostyyyk (https://sketchfab.com/pmcsarbaev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "T-90MS" (https://sketchfab.com/3d-models/t-90ms-de538d03a4af49b699438e8fc2fcf52c) by Cloostyyyk (https://sketchfab.com/pmcsarbaev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

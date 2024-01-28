@@ -36,7 +36,6 @@
         <div class="search-bar flex-1">
           <a-input
             v-model:value.lazy="searchValue"
-            autofocus
             placeholder="Search 3D Models"
             class="flex-1"
           />
@@ -44,7 +43,7 @@
             class="search-btn flex items-center justify-center cursor-pointer"
           >
             <img
-              class="inline-block w-6 primary-filter"
+              class="inline-block w-6 primary-filter-1"
               src="../../../assets/icons/search.svg"
               alt="Cart"
             />
@@ -57,7 +56,7 @@
             <a-badge :count="1" :overflow-count="10">
               <div class="cursor-pointer">
                 <img
-                  class="inline-block w-6 primary-filter"
+                  class="inline-block w-6 primary-filter-1"
                   src="../../../assets/icons/cart.svg"
                   alt="Cart"
                 />
@@ -89,7 +88,7 @@
             <a-badge :count="1" :overflow-count="10">
               <div class="cursor-pointer">
                 <img
-                  class="inline-block w-6 primary-filter"
+                  class="inline-block w-6 primary-filter-1"
                   src="../../../assets/icons/bell.svg"
                   alt="Bell"
                 />
@@ -318,11 +317,6 @@ const changePage = (title: string) => {
 
   &:hover {
     background-color: #e0e0e0;
-
-    .primary-filter {
-      filter: brightness(0) invert(14%) sepia(100%) saturate(7491%)
-        hue-rotate(193deg) brightness(115%) contrast(131%);
-    }
   }
 }
 </style>

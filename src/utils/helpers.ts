@@ -1,4 +1,4 @@
-import { ref } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 import { Dayjs } from 'dayjs';
 
 export const extend = Object.assign;
@@ -16,13 +16,16 @@ export const getTime = (time: Dayjs) => {
   return time.format('HH:mm');
 };
 
-// Check device
-export const isDesktop = ref<boolean>(window.innerWidth >= 1024);
-export const isTablet = ref<boolean>(
-  window.innerWidth > 768 && window.innerWidth < 1024,
-);
-export const isMobile = ref<boolean>(window.innerWidth <= 768);
+export const showQuantity = (number: number) => {
+  return number >= 1000 ? (number / 1000).toFixed(1) + 'k' : number;
+};
 
 // Size of device
-export const deviceWidth = window.innerWidth;
-export const deviceHeight = window.innerHeight;
+export const listenerResize = (handleResize: () => void) => {
+  onMounted(() => {
+    window.addEventListener('resize', handleResize);
+  });
+  onUnmounted(() => {
+    window.removeEventListener('resize', handleResize);
+  });
+};

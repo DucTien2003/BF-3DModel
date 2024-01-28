@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stitch
+* source:	https://sketchfab.com/3d-models/stitch-5a3f088e9e0e4bcf834f43e94f5329f4
+* author:	AlmondFeather (https://sketchfab.com/almondfeather)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stitch" (https://sketchfab.com/3d-models/stitch-5a3f088e9e0e4bcf834f43e94f5329f4) by AlmondFeather (https://sketchfab.com/almondfeather) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

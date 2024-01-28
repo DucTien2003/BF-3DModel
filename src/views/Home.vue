@@ -1,37 +1,56 @@
 <template>
-  <div class="container-content home">
-    <card-model></card-model>
+  <div class="container-content wrapper-content">
+    <div class="home">
+      <card-model
+        v-for="(model, index) in models"
+        :key="index"
+        :model="model"
+      ></card-model>
+    </div>
   </div>
-  <div>
-    <a-button type="primary" @click="showModal">Open Modal</a-button>
-    <a-modal v-model:open="open" title="Basic Modal" @ok="handleOk">
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-    </a-modal>
-  </div>
+
+  <!-- Modal model detail -->
+  <a-modal
+    v-model:open="modalStore.isShowModal"
+    :closable="false"
+    :footer="null"
+    :afterClose="disposeScene"
+  >
+    <ModalModelDetail
+      :model="modalStore.getModel"
+      :toggleLike="modalStore.toggleLike"
+    ></ModalModelDetail>
+  </a-modal>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { reactive } from 'vue';
+
+import { models as modelsAPI } from '@/api';
 import CardModel from '@/components/cardModel/CardModel.vue';
+import ModalModelDetail from '@/components/cardModel/modalModelDetail/ModalModelDetail.vue';
+import { useModalStore } from '@/stores';
+import { disposeScene } from '@/utils';
 
-const open = ref<boolean>(false);
+const modalStore = useModalStore();
 
-const showModal = () => {
-  open.value = true;
-};
-
-const handleOk = (e: MouseEvent) => {
-  console.log(e.target);
-  open.value = false;
-};
+const models = reactive(modelsAPI);
 </script>
 
 <style lang="scss" scoped>
-.home {
+.wrapper-content {
+  background-color: #f2f2f2;
   padding-top: 30px;
   padding-bottom: 30px;
-  background-color: #f2f2f2;
+}
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+.color {
+  color: #bee2ff;
 }
 </style>
