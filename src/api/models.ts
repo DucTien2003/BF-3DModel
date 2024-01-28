@@ -2,13 +2,13 @@ import { InfoModel } from '@/types';
 
 const modelUrl = (model: string) => {
   return {
-    represent: 'public/assets/models/' + model + '/represent-image.png',
-    url: 'public/assets/models/' + model + '/scene.gltf',
+    represent: '/assets/models/' + model + '/represent-image.png',
+    url: '/assets/models/' + model + '/scene.gltf',
   };
 };
 const authorUlr = (author: string) => {
   return {
-    avatar: '/public/assets/authors/' + author + '/avatar.jpg',
+    avatar: '/assets/authors/' + author + '/avatar.jpg',
   };
 };
 
