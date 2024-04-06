@@ -178,8 +178,8 @@ const loadModel = (
       scene.add(model.scene);
     },
     function (xhr) {
-      var temp = xhr;
-      // console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
+      // var temp = xhr;
+      console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
     },
     function (error) {
       console.log('An error happened', error);

@@ -125,7 +125,7 @@ import { useRouter } from 'vue-router';
 import { message } from 'ant-design-vue';
 
 import { useCheckStore } from '@/stores';
-import { GoogleOutlined, FacebookFilled } from '@ant-design/icons-vue';
+import { GoogleOutlined } from '@ant-design/icons-vue';
 
 import useValidator from '@/composables/useValidator';
 

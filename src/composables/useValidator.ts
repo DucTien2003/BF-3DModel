@@ -1,4 +1,4 @@
-import { isEmpty } from '@/utils';
+// import { isEmpty } from '@/utils';
 
 export const useValidator = () => {
   /**
@@ -80,6 +80,7 @@ export const useValidator = () => {
 
   const passwordRule = (fieldName = '', trigger = 'blur') => {
     const validator = (rule: any, value: any) => {
+      console.log(rule);
       if (!value) return Promise.reject(fieldName + ' is required');
       if (/\s+/.test(value))
         return Promise.reject(fieldName + ' must not contain whitespace');
@@ -109,6 +110,7 @@ export const useValidator = () => {
   // Validate field do not exist whitespace between value
   const whiteSpace = (fieldName: string, trigger = 'blur') => {
     const validator = (rule: any, value: string) => {
+      console.log(rule);
       const trimValue = value?.trim();
       if (trimValue && /\s+/.test(trimValue)) {
         return Promise.reject(fieldName + ' must not contain whitespace');

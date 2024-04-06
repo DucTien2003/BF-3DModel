@@ -18,7 +18,7 @@ checkStore.setIsHomePage(route.name === 'home');
 
 watch(
   () => route.name,
-  (to: any, from: any) => {
+  () => {
     checkStore.setIsHomePage(route.name === 'home');
   },
 );

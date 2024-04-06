@@ -147,7 +147,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import { GoogleOutlined, FacebookFilled } from '@ant-design/icons-vue';
+import { GoogleOutlined } from '@ant-design/icons-vue';
 import { message } from 'ant-design-vue';
 
 import useValidator from '@/composables/useValidator';
