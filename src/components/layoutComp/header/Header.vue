@@ -1,12 +1,19 @@
 <template>
-  <div class="container-content header">
-    <!-- Header -->
+  <!-- Header -->
+  <header
+    class="container-content header py-4"
+    :class="
+      checkStore.getIsHomePage && topHomePage
+        ? 'bg-transparent'
+        : 'primary-box-shadow-1-3  bg-white'
+    "
+  >
     <div class="flex items-center w-full">
       <!-- Header logo -->
-      <div class="flex items-center justify-center">
+      <section class="flex items-center justify-center">
         <!-- Collapse -->
         <div
-          v-if="isMobile"
+          v-if="checkStore.getIsMobile"
           class="flex items-center !cursor-pointer px-2"
           @click="triggerCollapse"
         >
@@ -14,111 +21,160 @@
         </div>
 
         <!-- Logo -->
-        <div class="logo primary-linear-text">BF-3Dmodel</div>
-      </div>
+        <router-link :to="{ name: 'home' }" class="logo">
+          <span
+            :class="
+              checkStore.getIsHomePage && topHomePage
+                ? 'home-color'
+                : 'primary-linear-text'
+            "
+          >
+            BF-3Dmodel
+          </span>
+        </router-link>
+      </section>
 
       <!-- Navigation -->
-      <div class="navigation-bar flex items-center mx-14">
-        <div
-          v-for="(navigationItem, index) in navigation"
-          class="navigation-item"
-          :class="isChoose === navigationItem.title ? 'navigation-choose' : ''"
-          :key="index"
-          @click="changePage(navigationItem.title)"
-        >
-          {{ navigationItem.title }}
-        </div>
-      </div>
+      <section>
+        <ul class="navigation-bar flex items-center mx-14">
+          <li
+            v-for="(navigationItem, index) in navigation"
+            class="navigation-item relative font-semibold border-t-4 border-solid border-t-transparent cursor-pointer"
+            :class="{
+              'navigation-choose primary-color-1':
+                route.name === navigationItem.to,
+              'home-nav': checkStore.getIsHomePage && topHomePage,
+            }"
+            :key="index"
+          >
+            <router-link :to="{ name: navigationItem.to }">
+              {{ navigationItem.title }}
+            </router-link>
+          </li>
+        </ul>
+      </section>
 
       <!-- Actions -->
-      <div class="flex items-center justify-center flex-1">
+      <section class="flex items-center justify-center flex-1">
         <!-- Search -->
-        <div class="search-bar flex-1">
+        <div
+          class="search-bar flex items-center justify-center flex-1 h-10 mr-5"
+          :class="{ 'home-search': checkStore.getIsHomePage && topHomePage }"
+        >
           <a-input
             v-model:value.lazy="searchValue"
             placeholder="Search 3D Models"
             class="flex-1"
           />
           <div
-            class="search-btn flex items-center justify-center cursor-pointer"
+            class="search-btn flex items-center justify-center cursor-pointer h-full border rounded-r-full rounded-br-full"
+            :class="{
+              'home-search-btn': checkStore.getIsHomePage && topHomePage,
+            }"
           >
             <img
-              class="inline-block w-6 primary-filter-1"
+              class="w-6"
+              :class="
+                checkStore.getIsHomePage && topHomePage
+                  ? 'primary-filter-1'
+                  : ''
+              "
               src="../../../assets/icons/search.svg"
               alt="Cart"
             />
           </div>
         </div>
 
-        <!-- Cart -->
-        <div class="action-icon">
-          <a-dropdown :trigger="['click']" arrow placement="bottomRight">
-            <a-badge :count="1" :overflow-count="10">
+        <div v-if="checkStore.getIsLogin" class="flex items-center">
+          <!-- Upload -->
+          <a-tooltip title="Upload" color="#00B3FC" placement="bottom">
+            <router-link
+              :to="{ name: 'upload' }"
+              class="action-icon w-10 h-10 p-2 mr-3 rounded-full cursor-pointer"
+            >
               <div class="cursor-pointer">
                 <img
-                  class="inline-block w-6 primary-filter-1"
-                  src="../../../assets/icons/cart.svg"
+                  class="w-6 primary-filter-1"
+                  src="../../../assets/icons/upload.svg"
                   alt="Cart"
                 />
               </div>
-            </a-badge>
-            <template #overlay>
-              <a-menu>
-                <a-menu-item>
-                  <template #icon>
-                    <UserOutlined />
-                  </template>
-                  Hồ sơ
-                </a-menu-item>
+            </router-link>
+          </a-tooltip>
 
-                <a-menu-item @click="">
-                  <template #icon>
-                    <UserOutlined />
-                  </template>
-                  Đăng xuất
-                </a-menu-item>
-              </a-menu>
-            </template>
-          </a-dropdown>
-        </div>
+          <!-- Cart -->
+          <div
+            class="action-icon w-10 h-10 p-2 mr-3 rounded-full cursor-pointer"
+          >
+            <a-dropdown :trigger="['click']" arrow placement="bottomRight">
+              <a-badge :count="1" :overflow-count="10">
+                <div class="cursor-pointer">
+                  <img
+                    class="w-6 primary-filter-1"
+                    src="../../../assets/icons/cart.svg"
+                    alt="Cart"
+                  />
+                </div>
+              </a-badge>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item>
+                    <template #icon>
+                      <UserOutlined />
+                    </template>
+                    <span>Hồ sơ</span>
+                  </a-menu-item>
 
-        <!-- Notifications -->
-        <div class="action-icon">
-          <a-dropdown :trigger="['click']" arrow placement="bottomRight">
-            <a-badge :count="1" :overflow-count="10">
-              <div class="cursor-pointer">
-                <img
-                  class="inline-block w-6 primary-filter-1"
-                  src="../../../assets/icons/bell.svg"
-                  alt="Bell"
-                />
-              </div>
-            </a-badge>
-            <template #overlay>
-              <a-menu>
-                <a-menu-item>
-                  <template #icon>
-                    <UserOutlined />
-                  </template>
+                  <a-menu-item @click="">
+                    <template #icon>
+                      <UserOutlined />
+                    </template>
+                    <span>Đăng xuất</span>
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+          </div>
 
-                  Hồ sơ
-                </a-menu-item>
+          <!-- Notifications -->
+          <div
+            class="action-icon w-10 h-10 p-2 mr-3 rounded-full cursor-pointer"
+          >
+            <a-dropdown :trigger="['click']" arrow placement="bottomRight">
+              <a-badge :count="1" :overflow-count="10">
+                <div class="cursor-pointer">
+                  <img
+                    class="w-6 primary-filter-1"
+                    src="../../../assets/icons/bell.svg"
+                    alt="Bell"
+                  />
+                </div>
+              </a-badge>
+              <template #overlay>
+                <a-menu>
+                  <a-menu-item>
+                    <template #icon>
+                      <UserOutlined />
+                    </template>
+                    Hồ sơ
+                  </a-menu-item>
 
-                <a-menu-item @click="">
-                  <template #icon>
-                    <UserOutlined />
-                  </template>
+                  <a-menu-item @click="">
+                    <template #icon>
+                      <UserOutlined />
+                    </template>
 
-                  Đăng xuất
-                </a-menu-item>
-              </a-menu>
-            </template>
-          </a-dropdown>
+                    Đăng xuất
+                  </a-menu-item>
+                </a-menu>
+              </template>
+            </a-dropdown>
+          </div>
         </div>
 
         <!-- User -->
-        <div>
-          <a-dropdown arrow placement="bottomRight">
+        <div v-if="checkStore.getIsLogin">
+          <a-dropdown :trigger="['click']" arrow placement="bottomRight">
             <div class="flex items-center cursor-pointer">
               <a-avatar size="large">
                 <template #icon>
@@ -133,60 +189,77 @@
                   <template #icon>
                     <UserOutlined />
                   </template>
-                  Hồ sơ
+                  <span>Hồ sơ</span>
                 </a-menu-item>
 
-                <a-menu-item>
+                <a-menu-item @click="handleLogout()">
                   <template #icon>
                     <UserOutlined />
                   </template>
-                  Đăng xuất
+                  <span>Log out</span>
                 </a-menu-item>
               </a-menu>
             </template>
           </a-dropdown>
         </div>
-      </div>
+
+        <!-- Login - SignUp -->
+        <div v-else>
+          <router-link :to="{ name: 'login' }">
+            <button
+              class="login-btn px-5"
+              :class="{ 'home-btn': checkStore.getIsHomePage && topHomePage }"
+            >
+              <h4
+                class="font-semibold"
+                :class="
+                  checkStore.getIsHomePage && topHomePage
+                    ? 'home-color'
+                    : 'primary-color-1 primary-hover-2'
+                "
+              >
+                <span>Login</span>
+              </h4>
+            </button>
+          </router-link>
+          <router-link :to="{ name: 'register' }">
+            <button
+              class="sign-up-btn px-5 ml-1"
+              :class="{ 'home-btn': checkStore.getIsHomePage && topHomePage }"
+            >
+              <h4
+                class="font-semibold"
+                :class="
+                  checkStore.getIsHomePage && topHomePage
+                    ? 'home-color'
+                    : 'primary-color-1 primary-hover-2'
+                "
+              >
+                <span>Sign up</span>
+              </h4>
+            </button>
+          </router-link>
+        </div>
+      </section>
     </div>
-  </div>
+  </header>
 </template>
 
-<script lang="ts" setup>
-// import { computed } from 'vue';
-import { watch, ref, reactive } from 'vue';
+<script setup lang="ts">
+import { watch, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { listenerScroll } from '@/utils';
+import { navigation } from '@/utils/constants';
+import { useSliderStore, useCheckStore } from '@/stores';
 import { MenuOutlined, UserOutlined } from '@ant-design/icons-vue';
 
-import { SliderStore } from '@/stores';
-
-defineProps<{
-  isMobile: boolean;
-}>();
-
 const searchValue = ref<string>('');
-const isChoose = ref('News feed');
+const route = useRoute();
 
-const navigation = reactive([
-  {
-    title: 'News feed',
-    to: { name: 'news feed' },
-  },
-  {
-    title: 'Suggestions',
-    to: { name: 'suggestions' },
-  },
-  {
-    title: 'Top',
-    to: { name: 'top' },
-  },
-  {
-    title: 'Collections',
-    to: { name: 'collections' },
-  },
-]);
-
-const store = SliderStore();
+const checkStore = useCheckStore();
+const sliderStore = useSliderStore();
 const triggerCollapse = () => {
-  store.triggerCollapse();
+  sliderStore.triggerCollapse();
 };
 // const selectedKeys = ref<string[]>(['1']);
 // const collapsed = ref<boolean>(false);
@@ -195,36 +268,36 @@ watch(searchValue, () => {
   console.log(searchValue.value);
 });
 
-const changePage = (title: string) => {
-  isChoose.value = title;
+const handleLogout = () => {
+  checkStore.setIsLogin(false);
 };
+
+// Scroll
+const topHomePage = ref<boolean>(true);
+const handleScroll = () => {
+  topHomePage.value = window.scrollY === 0;
+};
+listenerScroll(handleScroll);
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 @import '../../../assets/styles/variables';
 
 .header {
-  display: flex;
-  align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  transition: background-color 0.2s ease;
 }
 
-.logo {
-  min-width: 130px;
-  font-size: 21px;
-  font-weight: 900;
-  user-select: none;
-  cursor: pointer;
+.home-color {
+  color: var(--home-text-color);
 }
 
 .navigation-item {
-  position: relative;
   font-size: 17px;
-  font-weight: 600;
-  border-top: 4px solid transparent;
-  cursor: pointer;
 
   &::after {
     content: '';
@@ -246,6 +319,14 @@ const changePage = (title: string) => {
     }
   }
 
+  &.home-nav {
+    color: var(--home-text-color);
+
+    &::after {
+      background-color: var(--home-text-color);
+    }
+  }
+
   & + .navigation-item {
     margin-left: 15px;
   }
@@ -262,26 +343,13 @@ const changePage = (title: string) => {
   }
 }
 
-.navigation-choose {
-  &.navigation-item {
-    color: var(--primary-color-1);
-
-    &::after {
-      display: inline-block;
-      background-color: var(--primary-color-1);
-    }
-  }
+.navigation-choose.navigation-item::after {
+  display: inline-block;
+  background-color: var(--primary-color-1);
 }
 
 .search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  margin-right: 20px;
-
   .ant-input {
-    width: 200px;
     height: 100%;
     padding: 0px 15px;
     font-size: 16px;
@@ -290,12 +358,8 @@ const changePage = (title: string) => {
   }
 
   .search-btn {
-    height: 100%;
     padding: 0 13px;
-    border-width: 1px;
     border-color: #d9d9d9;
-    border-top-right-radius: 999px;
-    border-bottom-right-radius: 999px;
 
     &:hover {
       border-color: #4096ff;
@@ -303,20 +367,60 @@ const changePage = (title: string) => {
       border-inline-end-width: 1px;
       outline: 0;
     }
+
+    &.home-search-btn {
+      img {
+        filter: brightness(100%) invert(100%) sepia(0%) saturate(0%)
+          hue-rotate(0deg) brightness(100%) contrast(100%);
+      }
+    }
+  }
+
+  &.home-search {
+    .ant-input,
+    .search-btn {
+      border-color: var(--home-text-color);
+    }
   }
 }
 
 .action-icon {
-  width: 40px;
-  height: 40px;
-  padding: 8px;
-  margin-right: 10px;
   background-color: #f5f5f5;
-  border-radius: 999px;
-  cursor: pointer;
 
   &:hover {
     background-color: #e0e0e0;
+  }
+}
+
+.login-btn {
+  padding: 4px 18px;
+  border: 2px solid rgba($color: #7f409f, $alpha: 0.5);
+  border-radius: 6px;
+}
+
+.sign-up-btn {
+  padding: 6px 20px;
+  background-color: rgba($color: #7f409f, $alpha: 0.15);
+  border-radius: 6px;
+}
+
+.home-btn {
+  &.login-btn {
+    border: 2px solid var(--home-text-color);
+
+    &:hover {
+      text-decoration: underline var(--home-text-color) solid 2px;
+      background-color: rgba($color: white, $alpha: 0.2);
+    }
+  }
+
+  &.sign-up-btn {
+    background-color: rgba($color: white, $alpha: 0.2);
+
+    &:hover {
+      text-decoration: underline var(--home-text-color) solid 2px;
+      background-color: rgba($color: white, $alpha: 0.4);
+    }
   }
 }
 </style>

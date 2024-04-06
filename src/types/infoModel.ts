@@ -8,7 +8,6 @@ export interface InfoModel {
   release: string;
   description: string;
   categories: string[];
-  tags: string[];
   author: {
     name: string;
     avatar: string;
@@ -26,6 +25,9 @@ export interface InfoModel {
       isBloom: boolean;
       parameter: number[];
     };
-    animation: number[];
+    animation: {
+      default: number;
+      quantity: number;
+    };
   };
 }

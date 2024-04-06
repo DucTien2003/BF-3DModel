@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 
-export const SliderStore = defineStore({
+export const useSliderStore = defineStore({
   id: 'SliderStore',
   state: () => ({ isCollapsed: false }),
 

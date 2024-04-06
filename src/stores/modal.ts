@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { renderModel } from '@/utils';
+import { renderModel } from '@/components/cardModel/modalModelDetail/model';
 
 import { InfoModel } from '@/types';
 

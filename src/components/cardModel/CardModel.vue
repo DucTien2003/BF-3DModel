@@ -1,27 +1,32 @@
 <template>
-  <div class="wrapper-card-model">
-    <div class="card-model primary-color-2">
+  <div class="wrapper-card-model rounded-md">
+    <div class="primary-box-shadow-1-2 flex flex-col primary-color-2">
       <!-- Represent -->
       <img
         :src="model.represent"
         alt="image-model"
         class="represent block w-full cursor-pointer"
-        @click="modalStore.toggleShowModal(model)"
+        @click="!checkStore.isHomePage && modalStore.toggleShowModal(model)"
       />
 
       <!-- Info -->
       <div class="card-info flex items-center px-2 py-3">
         <!-- Left -->
-        <div class="flex items-center flex-1">
+        <div class="flex items-center mr-auto">
           <!-- Author -->
-          <img :src="model.author.avatar" alt="avatar" class="block w-5 mr-2" />
+          <img
+            :src="model.author.avatar"
+            alt="avatar"
+            class="inline-block mr-2 w-5"
+          />
           <!-- Name model -->
-          <div
+          <a
+            v-if="!checkStore.isHomePage"
             class="primary-hover-1 cursor-pointer limited-line-1"
             @click="modalStore.toggleShowModal(model)"
           >
             {{ model.name }}
-          </div>
+          </a>
         </div>
         <!-- Right -->
         <div class="flex items-center justify-center ml-5 select-none">
@@ -44,7 +49,11 @@
             <div class="text-xs">{{ showQuantity(model.downloads) }}</div>
           </div>
           <!-- Like -->
-          <div class="flex cursor-pointer" @click="toggleLike">
+          <div
+            class="flex"
+            :class="{ 'cursor-pointer': !checkStore.isHomePage }"
+            @click="!checkStore.isHomePage && toggleLike()"
+          >
             <img
               v-if="model.isLike"
               src="../../assets/icons/star-fill.svg"
@@ -67,12 +76,13 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { useModalStore } from '@/stores';
+<script setup lang="ts">
+import { useModalStore, useCheckStore } from '@/stores';
 import { InfoModel } from '@/types';
 import { showQuantity } from '@/utils';
 
 const modalStore = useModalStore();
+const checkStore = useCheckStore();
 
 const { model } = defineProps<{
   model: InfoModel;
@@ -88,30 +98,14 @@ const toggleLike = () => {
 };
 </script>
 
-<style lang="scss" scoped>
-.wrapper-card-model {
-  width: calc(100% / 3);
-  padding: 0 10px;
-  margin-bottom: 20px;
-}
-
-.card-model {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 1px 1px rgba($color: #7f409f, $alpha: 0.1),
-    0 7px 18px 0 rgba($color: #7f409f, $alpha: 0.1);
-
-  &:hover {
-    box-shadow: 0 1px 1px rgba($color: #00b3fc, $alpha: 0.1),
-      0 7px 18px 0 rgba($color: #00b3fc, $alpha: 0.1);
-  }
-}
+<style scoped lang="scss">
+@import '../../assets/styles/variables';
 
 .represent {
   aspect-ratio: 2;
 }
 
 .liked {
-  color: rgb(255, 156, 56);
+  color: var(--liked-color);
 }
 </style>

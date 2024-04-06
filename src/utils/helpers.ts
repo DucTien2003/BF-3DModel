@@ -20,6 +20,16 @@ export const showQuantity = (number: number) => {
   return number >= 1000 ? (number / 1000).toFixed(1) + 'k' : number;
 };
 
+export const isEmpty = (value: any) => {
+  return (
+    value === null || // check for null
+    value === undefined || // check for undefined
+    value === '' || // check for empty string
+    (Array.isArray(value) && value.length === 0) || // check for empty array
+    (typeof value === 'object' && Object.keys(value).length === 0) // check for empty object
+  );
+};
+
 // Size of device
 export const listenerResize = (handleResize: () => void) => {
   onMounted(() => {
@@ -27,5 +37,15 @@ export const listenerResize = (handleResize: () => void) => {
   });
   onUnmounted(() => {
     window.removeEventListener('resize', handleResize);
+  });
+};
+
+// Scroll
+export const listenerScroll = (handleScroll: () => void) => {
+  onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+  });
+  onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll);
   });
 };

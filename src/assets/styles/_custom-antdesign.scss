@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 // Layout
 .ant-layout {
   background-color: #fff;
@@ -27,15 +29,6 @@
   }
 }
 
-// Dropdown
-.ant-dropdown {
-  .ant-dropdown-menu {
-    box-shadow: 0 6px 16px 0 rgba($color: #7f409f, $alpha: 0.08),
-      0 3px 6px -4px rgba($color: #7f409f, $alpha: 0.5),
-      0 9px 28px 8px rgba($color: #7f409f, $alpha: 0.05);
-  }
-}
-
 // Modal
 .ant-modal-wrap {
   display: flex;
@@ -59,8 +52,41 @@
     height: 100%;
     padding: 0;
     border-radius: 0;
-    box-shadow: 0 6px 16px 0 rgba(var(--primary-color-2), 0.08),
-      0 3px 6px -4px rgba(var(--primary-color-2), 0.12),
-      0 9px 28px 8px rgba(var(--primary-color-2), 0.05);
   }
+}
+
+// Input
+.ant-input-affix-wrapper,
+input.ant-input {
+  font-size: 16px;
+  padding: 5px 11px;
+}
+
+// Switch
+button.ant-switch {
+  background-color: rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+// Upload
+.ant-upload {
+  margin: 0 !important;
+}
+
+.ant-upload-wrapper.ant-upload-picture-card-wrapper {
+  width: auto !important;
+}
+
+.ant-upload.ant-upload-select,
+.ant-upload-list-item-container {
+  // width: 150px !important;
+  // height: 150px !important;
+}
+
+// Select
+.ant-select-multiple .ant-select-selection-item {
+  line-height: normal;
 }

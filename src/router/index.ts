@@ -18,17 +18,82 @@ const routes: Array<RouteRecordRaw> = [
       layout: 'default-layout',
     },
   },
-  //   {
-  //     path: '/reset-password',
-  //     name: 'reset-password',
-  //     component: () =>
-  //       import(
-  //         /* webpackChunkName: "reset-password" */ '../views/auth/ResetPassword.vue'
-  //       ),
-  //     meta: {
-  //       layout: 'auth-layout',
-  //     },
-  //   },
+  {
+    path: '/suggestions',
+    name: 'suggestions',
+    component: () =>
+      import(/* webpackChunkName: "suggestions" */ '../views/NewsFeed.vue'),
+    meta: {
+      layout: 'default-layout',
+    },
+  },
+  {
+    path: '/top',
+    name: 'top',
+    component: () =>
+      import(/* webpackChunkName: "top" */ '../views/NewsFeed.vue'),
+    meta: {
+      layout: 'default-layout',
+    },
+  },
+  {
+    path: '/collections',
+    name: 'collections',
+    component: () =>
+      import(/* webpackChunkName: "collections" */ '../views/NewsFeed.vue'),
+    meta: {
+      layout: 'default-layout',
+    },
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () =>
+      import(/* webpackChunkName: "login" */ '../views/auth/Login.vue'),
+    meta: {
+      layout: 'auth-layout',
+    },
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () =>
+      import(/* webpackChunkName: "register" */ '../views/auth/Register.vue'),
+    meta: {
+      layout: 'auth-layout',
+    },
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgot-password',
+    component: () =>
+      import(
+        /* webpackChunkName: "forgot-password" */ '../views/auth/ForgotPassword.vue'
+      ),
+    meta: {
+      layout: 'auth-layout',
+    },
+  },
+  {
+    path: '/reset-password',
+    name: 'reset-password',
+    component: () =>
+      import(
+        /* webpackChunkName: "reset-password'," */ '../views/auth/ResetPassword.vue'
+      ),
+    meta: {
+      layout: 'auth-layout',
+    },
+  },
+  {
+    path: '/upload',
+    name: 'upload',
+    component: () =>
+      import(/* webpackChunkName: "upload'," */ '../views/Upload.vue'),
+    meta: {
+      layout: 'base-layout',
+    },
+  },
   //   {
   //     path: '/home',
   //     name: 'home',

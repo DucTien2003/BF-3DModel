@@ -31,6 +31,7 @@ import {
   Table,
   TimePicker,
   Select,
+  Upload,
   Divider,
 } from 'ant-design-vue';
 import { App } from 'vue';
@@ -71,5 +72,6 @@ export const antd = (app: App<Element>) => {
     .use(Divider)
     .use(Table)
     .use(TimePicker)
-    .use(Checkbox);
+    .use(Checkbox)
+    .use(Upload);
 };

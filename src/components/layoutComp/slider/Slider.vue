@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isMobile">
+    <div v-if="checkStore.getIsMobile">
       <a-drawer
         :width="256"
         placement="left"
@@ -10,7 +10,7 @@
         class="slider-drawer theme-dark-drawer"
       >
         <div class="flex items-center ml-6 my-4">
-          <div class="primary-linear-text text-xl font-black">BF-3DModel</div>
+          <span class="primary-linear-text text-xl font-black">BF-3DModel</span>
         </div>
         <Menu></Menu>
       </a-drawer>
@@ -18,22 +18,19 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { computed } from 'vue';
 import Menu from './Menu.vue';
-import { SliderStore } from '@/stores';
+import { useSliderStore, useCheckStore } from '@/stores';
 
-defineProps({
-  isMobile: Boolean,
-});
-
-const store = SliderStore();
-const isCollapsed = computed(() => store.getIsCollapsed);
+const sliderStore = useSliderStore();
+const checkStore = useCheckStore();
+const isCollapsed = computed(() => sliderStore.getIsCollapsed);
 const toggleSlider = () => {
-  store.setIsCollapse(!isCollapsed.value);
+  sliderStore.setIsCollapse(!isCollapsed.value);
 };
 // const selectedKeys = ref<string[]>(['1']);
 // const collapsed = ref<boolean>(false);
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped lang="scss"></style>

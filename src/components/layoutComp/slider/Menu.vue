@@ -10,7 +10,7 @@
         <template #icon>
           <PieChartOutlined />
         </template>
-        <router-link :to="{ name: 'home' }"> Tổng quan </router-link>
+        <router-link :to="{ name: 'home' }">Tổng quan</router-link>
       </a-menu-item>
 
       <a-sub-menu key="2">
@@ -49,7 +49,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { reactive, watch } from 'vue';
 import { PieChartOutlined, SettingOutlined } from '@ant-design/icons-vue';
 

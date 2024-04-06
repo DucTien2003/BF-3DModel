@@ -10,4 +10,8 @@ export function registerGlobalComponent(app: App<Element>) {
     'AuthLayout',
     defineAsyncComponent(() => import('../layouts/AuthLayout.vue')),
   );
+  app.component(
+    'BaseLayout',
+    defineAsyncComponent(() => import('../layouts/BaseLayout.vue')),
+  );
 }

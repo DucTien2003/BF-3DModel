@@ -23,7 +23,6 @@ export const models: InfoModel[] = [
     release: '03/05/2023',
     description: 'No description provided.',
     categories: ['Animals & Pets'],
-    tags: ['butterflies', 'animal', 'animation', 'blue'],
     author: {
       isFollow: false,
       name: 'Erina eka syaharani',
@@ -41,7 +40,10 @@ export const models: InfoModel[] = [
         isBloom: false,
         parameter: [0, 0, 0],
       },
-      animation: [0],
+      animation: {
+        default: 0,
+        quantity: 1,
+      },
     },
   },
   {
@@ -55,35 +57,6 @@ export const models: InfoModel[] = [
     description:
       "Super Muscular Bodybuilder Doge 3D Model: This model is a playful and exaggerated representation of the popular Doge meme, transformed into a muscular bodybuilder. Perfect for humorous games, animations, or as a unique digital art piece, this Doge character combines the internet-famous Shiba Inu with an over-the-top bodybuilding physique. Compatible with various 3D software and game engines, it's designed for both commercial and non-commercial use.",
     categories: ['Animals & Pets', 'Characters & Creatures'],
-    tags: [
-      'dog',
-      'meme',
-      'prop',
-      'muscle',
-      'piece',
-      'fitness',
-      'rig',
-      'muscular',
-      'internet',
-      'bodybuilder',
-      'shiba',
-      'doge',
-      'inu',
-      'exaggerated',
-      'character',
-      'asset',
-      'game',
-      '3d',
-      'art',
-      'model',
-      'digital',
-      'animation',
-      'animated',
-      'rigged',
-      'comedic',
-      'humorous',
-      'createdwithai',
-    ],
     author: {
       name: 'GAM3D',
       avatar: authorUlr('author1').avatar,
@@ -101,7 +74,10 @@ export const models: InfoModel[] = [
         isBloom: false,
         parameter: [0, 0, 0],
       },
-      animation: [0],
+      animation: {
+        default: 0,
+        quantity: 1,
+      },
     },
   },
   {
@@ -115,36 +91,6 @@ export const models: InfoModel[] = [
     description:
       'WeMade. I do not own this model, all rights are reserved to the company. For non-commercial and PG13 use only.',
     categories: ['Animals & Pets', 'Characters & Creatures'],
-    tags: [
-      'silver',
-      'npc',
-      'modding',
-      'fbx',
-      'enemy',
-      'dragonkin',
-      'free3dmodel',
-      'unrealengine',
-      'hightpoly',
-      'freedownload',
-      'fantasycreature',
-      'bestiary',
-      'character',
-      'unity',
-      'blender',
-      'blender3d',
-      'gameasset',
-      'animation',
-      'monster',
-      '3dmodel',
-      'fantasy',
-      'dragon',
-      'highpoly',
-      'wing',
-      '3dmodeldownload',
-      'enemydesign',
-      '3dmodelcharacter',
-      '3dmodelrelease',
-    ],
     author: {
       name: 'Doctor A.',
       avatar: authorUlr('author1').avatar,
@@ -163,7 +109,10 @@ export const models: InfoModel[] = [
         // parameter: [0, 1, 0.3],
         parameter: [0, 0, 0],
       },
-      animation: [], // Have 37 animations
+      animation: {
+        default: 0,
+        quantity: 37,
+      },
     },
   },
   {
@@ -177,21 +126,6 @@ export const models: InfoModel[] = [
     description:
       'My entry for the 3D Modeling Challenge: Holograms of the Future contest. Tried to create a classic Neon sign look but with a 3D holographic twist.',
     categories: ['Animals & Pets'],
-    tags: [
-      'burger',
-      'hologram',
-      'holo',
-      'sign',
-      'neon',
-      'holographic',
-      'advertisement',
-      'pitstop',
-      'lookingglass',
-      'advert',
-      'robot',
-      'lookingglassimporterchallenge',
-      'noai',
-    ],
     author: {
       name: 'Phil_XG',
       avatar: authorUlr('author1').avatar,
@@ -209,7 +143,10 @@ export const models: InfoModel[] = [
         isBloom: true,
         parameter: [1.8, 0.35, 0.3], // Sáng tổng thể(lớn), Độ chói(nhỏ), độ blur(nhỏ)
       },
-      animation: [],
+      animation: {
+        default: 0,
+        quantity: 0,
+      },
     },
   },
   {
@@ -223,16 +160,6 @@ export const models: InfoModel[] = [
     description:
       'School character assingment from last year. I recently fixed some things in blender so I could upload it here.',
     categories: ['Characters & Creatures'],
-    tags: [
-      'disney',
-      'stitch',
-      'maya',
-      'blender',
-      'free',
-      'animated',
-      'download',
-      'rigged',
-    ],
     author: {
       name: 'AlmondFeather',
       avatar: authorUlr('author1').avatar,
@@ -243,14 +170,17 @@ export const models: InfoModel[] = [
       url: modelUrl('model5').url,
       backgroundColor: '#bee2ff',
       camera: {
-        cameraPosition: [0, 0.4, 1.5],
+        cameraPosition: [0, 0.4, 1.8],
         lookAt: [0, 0.4, 0],
       },
       bloom: {
         isBloom: false,
         parameter: [0, 0, 0], // Sáng tổng thể(lớn), Độ chói(nhỏ), độ blur(nhỏ)
       },
-      animation: [0],
+      animation: {
+        default: 0,
+        quantity: 1,
+      },
     },
   },
   {
@@ -264,13 +194,6 @@ export const models: InfoModel[] = [
     description:
       'The X Bow Series Hover Vtol helicopter Carrier. Designed to convey 10 personel plus pilot. designed with space for additional load. modelled as a sci fi concept with a modern approach. 7 rotor system animated.',
     categories: ['Art & Abstract', 'Weapons & Military'],
-    tags: [
-      'hovercraft',
-      'vehicledesign',
-      'conceptdesign',
-      'helicopter',
-      'vertascan',
-    ],
     author: {
       name: 'VertaScan',
       avatar: authorUlr('author1').avatar,
@@ -288,7 +211,10 @@ export const models: InfoModel[] = [
         isBloom: false,
         parameter: [0, 0, 0], // Sáng tổng thể(lớn), Độ chói(nhỏ), độ blur(nhỏ)
       },
-      animation: [0],
+      animation: {
+        default: 0,
+        quantity: 1,
+      },
     },
   },
   {
@@ -302,7 +228,6 @@ export const models: InfoModel[] = [
     description:
       'WARNING: Re-uploading or selling for personal use is prohibited!!',
     categories: ['Animals & Pets'],
-    tags: ['boss', '3dsmax', 'gameasset', 'monster', 'dragon'],
     author: {
       name: 'Ryuism',
       avatar: authorUlr('author1').avatar,
@@ -320,7 +245,10 @@ export const models: InfoModel[] = [
         isBloom: false,
         parameter: [0, 0, 0], // Sáng tổng thể(lớn), Độ chói(nhỏ), độ blur(nhỏ)
       },
-      animation: [0], // Have 3 animation
+      animation: {
+        default: 0,
+        quantity: 3,
+      },
     },
   },
   {
@@ -334,7 +262,6 @@ export const models: InfoModel[] = [
     description:
       'T-90MS (Object 188AM “Breakthrough-2”) is a deep modernization of the T-90 main battle tank. The export versions of these tank modifications are known under the names T-90CM/MS.',
     categories: ['Cars & Vehicles', 'Weapons & Military'],
-    tags: ['free3dmodel', 'low - poly - model', 'blender', 'metasequoia4'],
     author: {
       name: 'Cloostyyyk',
       avatar: authorUlr('author1').avatar,
@@ -352,7 +279,44 @@ export const models: InfoModel[] = [
         isBloom: false,
         parameter: [0, 0, 0], // Sáng tổng thể(lớn), Độ chói(nhỏ), độ blur(nhỏ)
       },
-      animation: [],
+      animation: {
+        default: 0,
+        quantity: 0,
+      },
+    },
+  },
+  {
+    id: 'model9',
+    name: 'WoP - Octopus Pirate King (High Poly)',
+    views: 2311,
+    like: 114,
+    isLike: false,
+    downloads: 390,
+    release: '11/26/2009',
+    description:
+      'WARNING: This model was released for FREE on DeviantArt and later reuploaded and sold by this user . BE SURE NOT TO GIVE MONEY TO THIS SCAMMER',
+    categories: ['Animals & Pets', 'Characters & Creatures'],
+    author: {
+      name: 'Doctor A.',
+      avatar: authorUlr('author1').avatar,
+      isFollow: false,
+    },
+    represent: modelUrl('model9').represent,
+    setting: {
+      url: modelUrl('model9').url,
+      backgroundColor: '#cccccc',
+      camera: {
+        cameraPosition: [0, 7, 28],
+        lookAt: [0, 7, 0],
+      },
+      bloom: {
+        isBloom: false,
+        parameter: [0, 0, 0], // Sáng tổng thể(lớn), Độ chói(nhỏ), độ blur(nhỏ)
+      },
+      animation: {
+        default: 1,
+        quantity: 16,
+      },
     },
   },
 ];
